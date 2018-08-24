@@ -165,7 +165,6 @@ class NLPTrans(BaseRobot):
             'text': text,
         }
         params['sign'] = self.get_sign(params)
-        print(params)
         return params
 
     def run(self, image_param):
