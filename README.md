@@ -51,7 +51,7 @@ result = robot.run('愿原力与你同在')
 print(result)
 # {'ret': 0, 'msg': 'ok', 'data': {'source_text': '愿原力与你同在', 'target_text': 'May the Force be with you'}}
 
-# 默认为中英翻译，若需要其他语种翻译，请按一下格式实例化：
+# 默认为中英翻译，若需要其他语种翻译，请按以下格式实例化：
 # source为源语言，target为目标语言，
 robot = NLPTrans(you_app_id, you_app_key, source='en', target='es')
 
