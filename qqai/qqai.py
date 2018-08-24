@@ -38,7 +38,7 @@ class BaseRobot:
         uri_str = ''
         for key in sorted(params.keys()):
             uri_str += '{}={}&'.format(key,
-                                       parse.quote(str(params[key]), safe=''))
+                                       parse.quote_plus(str(params[key]), safe=''))
         sign_str = uri_str + 'app_key=' + self.app_key
 
         hash_str = hashlib.md5(sign_str.encode('utf-8'))
@@ -79,7 +79,7 @@ class TextChat(BaseRobot):
     api = 'https://api.ai.qq.com/fcgi-bin/nlp/nlp_textchat'
 
     def __init__(self, app_id, app_key):
-        super(TextChat, self).__init__(app_id, app_key)
+        super().__init__(app_id, app_key)
         self.session = str(time.time())
 
     def make_params(self, question):
@@ -135,6 +135,37 @@ class ImgToText(BaseRobot):
         }
         params['image'] = self.get_image(image_param)
         params['sign'] = self.get_sign(params)
+        return params
+
+    def run(self, image_param):
+        params = self.make_params(image_param)
+        response = self.call_api(params)
+        result = json.loads(response.text)
+        return result
+
+class NLPTrans(BaseRobot):
+    """文本翻译
+    """
+    api = 'https://api.ai.qq.com/fcgi-bin/nlp/nlp_texttranslate'
+
+    def __init__(self, app_id, app_key, source='zh', target='en'):
+            super().__init__(app_id, app_key)
+            self.source = source
+            self.target = target
+
+    def make_params(self, text):
+        """获取调用接口的参数
+        """
+        params = {
+            'app_id': self.app_id,
+            'time_stamp': int(time.time()),
+            'nonce_str': int(time.time()),
+            'source': self.source,
+            'target': self.target,
+            'text': text,
+        }
+        params['sign'] = self.get_sign(params)
+        print(params)
         return params
 
     def run(self, image_param):
