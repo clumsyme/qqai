@@ -117,14 +117,14 @@ robot = Detectface(your_app_id, your_app_key)
             - [ ] 获取个体列表
             - [ ] 获取人脸列表
             - [ ] 获取人脸信息
-    - [ ] 图片识别
+    - [x] 图片识别
         - [x] 物体场景识别
             - [x] 场景识别
             - [x] 物体识别
-        - [ ] 图片标签识别
+        - [x] 图片标签识别
         - [x] 看图说话
-        - [ ] 模糊图片检测
-        - [ ] 美食图片识别
+        - [x] 模糊图片检测
+        - [x] 美食图片识别
     - [ ] 图片特效
         - [ ] 人脸美妆
         - [ ] 人脸变妆
@@ -137,22 +137,14 @@ robot = Detectface(your_app_id, your_app_key)
 
 ```python
 import qqai
-qqai.nlp.wordseg('XXXXXXXX')
+qqai.nlp.WordSeg('xxxxxx', 'xxxxxx').run('XXXXXXXX')
 
 qqai.vision.ImgToText('xxxxx', 'xxxxxx').run('https://yyb.gtimg.com/aiplat/ai/assets/ai-demo/express-6.jpg')
 
-< {'ret': 0, 'msg': 'ok', 'data': {'text': '一位男士在海边骑自行车的照片'}}
-
-from qqai import nlp
-nlp.wordseg('XXXXXX')
-
-from qqai.nlp import wordseg
-wordseg('XXXXX')
+# {'ret': 0, 'msg': 'ok', 'data': {'text': '一位男士在海边骑自行车的照片'}}
 
 import qqai
-nlp_utily = qqai.nlp()
-nlp_utily.wordseg('XXXX')
-
-from qqai import nlp
+ws = qqai.nlp.WordSeg('xxxxx', 'xxxxxx')
+ws.run('XXXX')
 
 ```
