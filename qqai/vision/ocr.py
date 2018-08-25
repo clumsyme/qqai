@@ -1,7 +1,4 @@
-import base64
-import json
-import time
-from qqai.classes import QQAIClass, QQAIPicClass, QQAIPicOrURLClass
+from qqai.classes import *
 
 
 class IDCardOCR(QQAIClass):

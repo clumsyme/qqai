@@ -56,7 +56,8 @@ class QQAIPicClass(QQAIClass):
         params = {'app_id': self.app_id,
                   'time_stamp': int(time.time()),
                   'nonce_str': int(time.time()),
-                  'image': self.get_image(image_param)}
+                  'image': self.get_image(image_param),
+                 }
         params['sign'] = self.get_sign(params)
         return params
 
@@ -74,7 +75,8 @@ class QQAIPicRecognitionClass(QQAIClass):
                   'nonce_str': int(time.time()),
                   'format': api_format,
                   'topk': topk,
-                  'image': self.get_image(image_param)}
+                  'image': self.get_image(image_param),
+                  }
         params['sign'] = self.get_sign(params)
         return params
 

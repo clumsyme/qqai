@@ -1,6 +1,4 @@
-from qqai.classes import QQAIClass, QQAIPicClass, QQAIPicRecognitionClass
-import time
-import json
+from qqai.classes import *
 
 
 class SceneR(QQAIPicRecognitionClass):
@@ -25,7 +23,7 @@ class ImgToText(QQAIClass):
                   'time_stamp': int(time.time()),
                   'nonce_str': int(time.time()),
                   'image': self.get_image(image_param),
-                  'session_id': int(time.time())
+                  'session_id': int(time.time()),
                   }
         params['sign'] = self.get_sign(params)
         return params
@@ -43,3 +41,11 @@ class Fuzzy(QQAIPicClass):
 class Food(QQAIPicClass):
     """美食图片识别"""
     api = 'https://api.ai.qq.com/fcgi-bin/image/image_food'
+
+class Porn(QQAIPicClass):
+    """智能鉴黄"""
+    api = 'https://api.ai.qq.com/fcgi-bin/vision/vision_porn'
+
+class Terrorism(QQAIPicClass):
+    """暴恐图片识别"""
+    api = 'https://api.ai.qq.com/fcgi-bin/image/image_terrorism'
