@@ -2,6 +2,8 @@ import hashlib
 import base64
 from urllib import parse
 import requests
+import time
+import json
 
 
 class QQAIClass:
@@ -48,3 +50,19 @@ class QQAIClass:
 
         return requests.post(
             api, data=parse.urlencode(params).encode("utf-8"), headers=self.headers)
+
+class QQAIPicClass(QQAIClass):
+    def make_params(self, image_param):
+        """获取调用接口的参数"""
+        params = {'app_id': self.app_id,
+                  'time_stamp': int(time.time()),
+                  'nonce_str': int(time.time()),
+                  'image': self.get_image(image_param)}
+        params['sign'] = self.get_sign(params)
+        return params
+
+    def run(self, image_param):
+        params = self.make_params(image_param)
+        response = self.call_api(params)
+        result = json.loads(response.text)
+        return result

@@ -1,4 +1,4 @@
-from qqai.general import QQAIClass
+from qqai.general import QQAIClass, QQAIPicClass
 import time
 import json
 
@@ -43,24 +43,9 @@ class ObjectR(QQAIClass):
         result = json.loads(response.text)
         return result
 
-class Tag(QQAIClass):
+class Tag(QQAIPicClass):
     """图像标签识别"""
     api = 'https://api.ai.qq.com/fcgi-bin/image/image_tag'
-
-    def make_params(self, image_param):
-        """获取调用接口的参数"""
-        params = {'app_id': self.app_id,
-                  'time_stamp': int(time.time()),
-                  'nonce_str': int(time.time()),
-                  'image': self.get_image(image_param)}
-        params['sign'] = self.get_sign(params)
-        return params
-
-    def run(self, image_param):
-        params = self.make_params(image_param)
-        response = self.call_api(params)
-        result = json.loads(response.text)
-        return result
 
 class ImgToText(QQAIClass):
     """看图说话"""
@@ -83,40 +68,10 @@ class ImgToText(QQAIClass):
         result = json.loads(response.text)
         return result
 
-class Fuzzy(QQAIClass):
+class Fuzzy(QQAIPicClass):
     """模糊图片检测"""
     api = 'https://api.ai.qq.com/fcgi-bin/image/image_fuzzy'
 
-    def make_params(self, image_param):
-        """获取调用接口的参数"""
-        params = {'app_id': self.app_id,
-                  'time_stamp': int(time.time()),
-                  'nonce_str': int(time.time()),
-                  'image': self.get_image(image_param)}
-        params['sign'] = self.get_sign(params)
-        return params
-
-    def run(self, image_param):
-        params = self.make_params(image_param)
-        response = self.call_api(params)
-        result = json.loads(response.text)
-        return result
-
-class Food(QQAIClass):
+class Food(QQAIPicClass):
     """美食图片识别"""
     api = 'https://api.ai.qq.com/fcgi-bin/image/image_food'
-
-    def make_params(self, image_param):
-        """获取调用接口的参数"""
-        params = {'app_id': self.app_id,
-                  'time_stamp': int(time.time()),
-                  'nonce_str': int(time.time()),
-                  'image': self.get_image(image_param)}
-        params['sign'] = self.get_sign(params)
-        return params
-
-    def run(self, image_param):
-        params = self.make_params(image_param)
-        response = self.call_api(params)
-        result = json.loads(response.text)
-        return result
