@@ -138,3 +138,41 @@ class QQAIFacePersonClass(QQAIClass):
         response = self.call_api(params)
         result = json.loads(response.text)
         return result
+
+class QQAITextUTF8Class(QQAIClass):
+    def make_params(self, text):
+        """获取调用接口的参数"""
+        params = {'app_id': self.app_id,
+                  'time_stamp': int(time.time()),
+                  'nonce_str': int(time.time()),
+                  'text': text,
+                  }
+        params['sign'] = self.get_sign(params)
+        return params
+
+    def run(self, text):
+        params = self.make_params(text)
+        response = self.call_api(params)
+        result = json.loads(response.text)
+        return result
+
+class QQAITextGBKClass(QQAITextUTF8Class):
+
+    def get_sign(self, params):
+        """获取签名"""
+        uri_str = ''
+        for key in sorted(params.keys()):
+            uri_str += '{}={}&'.format(key, parse.quote(str(params[key]),
+                                                        encoding='gbk',
+                                                        safe=''))
+        sign_str = uri_str + 'app_key=' + self.app_key
+
+        hash_str = hashlib.md5(sign_str.encode('gbk'))
+        return hash_str.hexdigest().upper()
+
+    def call_api(self, params, api=None):
+        if api is None:
+            api = self.api
+        return requests.post(
+            api, data=parse.urlencode(params, encoding='gbk').encode("gbk"),
+            headers=self.headers)
