@@ -47,7 +47,6 @@ class QQAIClass:
     def call_api(self, params, api=None):
         if api is None:
             api = self.api
-
         return requests.post(
             api, data=parse.urlencode(params).encode("utf-8"), headers=self.headers)
 
@@ -66,3 +65,39 @@ class QQAIPicClass(QQAIClass):
         response = self.call_api(params)
         result = json.loads(response.text)
         return result
+
+class QQAIPicRecognitionClass(QQAIClass):
+    def make_params(self, image_param, api_format, topk):
+        """获取调用接口的参数"""
+        params = {'app_id': self.app_id,
+                  'time_stamp': int(time.time()),
+                  'nonce_str': int(time.time()),
+                  'format': api_format,
+                  'topk': topk,
+                  'image': self.get_image(image_param)}
+        params['sign'] = self.get_sign(params)
+        return params
+
+    def run(self, image_param, api_format=1, topk=5):
+        params = self.make_params(image_param, api_format, topk)
+        response = self.call_api(params)
+        result = json.loads(response.text)
+        return result
+
+class QQAIPicOrURLClass(QQAIPicClass):
+    def make_params(self, image_param):
+        """获取调用接口的参数"""
+        params = {'app_id': self.app_id,
+                  'time_stamp': int(time.time()),
+                  'nonce_str': int(time.time()),
+                  }
+        if type(image_param) == str:
+            params['image_url'] = image_param
+        elif hasattr(image_param, 'read'):
+            image_data = image_param.read()
+            image = base64.b64encode(image_data).decode("utf-8")
+            params['image'] = image
+        else:
+            raise TypeError('image must be URL or BufferedReader')
+        params['sign'] = self.get_sign(params)
+        return params

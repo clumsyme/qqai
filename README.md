@@ -88,15 +88,15 @@ robot = Detectface(your_app_id, your_app_key)
 - [ ] 计算机视觉
     - [ ] 智能鉴黄
     - [ ] 暴恐识别
-    - [ ] 优图OCR
-        - [ ] 身份证OCR
-        - [ ] 名片OCR
-        - [ ] 行驶证驾驶证OCR
-        - [ ] 车牌OCR
-        - [ ] 营业执照OCR
-        - [ ] 银行卡OCR
-        - [ ] 通用OCR
-        - [ ] 手写体OCR
+    - [x] 优图OCR
+        - [x] 身份证OCR
+        - [x] 名片OCR
+        - [x] 行驶证驾驶证OCR
+        - [x] 车牌OCR
+        - [x] 营业执照OCR
+        - [x] 银行卡OCR
+        - [x] 通用OCR
+        - [x] 手写体OCR
     - [ ] 人脸识别
         - [ ] 人脸检测与分析
         - [ ] 多人脸检测

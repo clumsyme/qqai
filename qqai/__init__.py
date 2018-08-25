@@ -1,3 +1,3 @@
 from .qqai import *
-from .general import *
+from .classes import *
 from .vision import *
