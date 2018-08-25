@@ -103,3 +103,38 @@ class QQAIPicOrURLClass(QQAIPicClass):
             raise TypeError('image must be URL or BufferedReader')
         params['sign'] = self.get_sign(params)
         return params
+
+class QQAIFaceClass(QQAIClass):
+    def make_params(self, image_param, mode):
+        """获取调用接口的参数"""
+        params = {'app_id': self.app_id,
+                  'time_stamp': int(time.time()),
+                  'nonce_str': int(time.time()),
+                  'image': self.get_image(image_param),
+                  'mode': mode,
+                  }
+        params['sign'] = self.get_sign(params)
+        return params
+
+    def run(self, image_param, mode=1):
+        params = self.make_params(image_param, mode)
+        response = self.call_api(params)
+        result = json.loads(response.text)
+        return result
+
+class QQAIFacePersonClass(QQAIClass):
+    def make_params(self, person_id):
+        """获取调用接口的参数"""
+        params = {'app_id': self.app_id,
+                  'time_stamp': int(time.time()),
+                  'nonce_str': int(time.time()),
+                  'person_id': person_id,
+                  }
+        params['sign'] = self.get_sign(params)
+        return params
+
+    def run(self, person_id):
+        params = self.make_params(person_id)
+        response = self.call_api(params)
+        result = json.loads(response.text)
+        return result
