@@ -33,8 +33,7 @@ class BaseRobot:
         return image
 
     def get_sign(self, params):
-        """获取签名
-        """
+        """获取签名"""
         uri_str = ''
         for key in sorted(params.keys()):
             uri_str += '{}={}&'.format(key,
@@ -56,15 +55,12 @@ class Detectface(BaseRobot):
     api = 'https://api.ai.qq.com/fcgi-bin/face/face_detectface'
 
     def make_params(self, image_param):
-        """获取调用接口的参数
-        """
-        params = {
-            'app_id': self.app_id,
-            'mode': 0,
-            'time_stamp': int(time.time()),
-            'nonce_str': int(time.time()),
-        }
-        params['image'] = self.get_image(image_param)
+        """获取调用接口的参数"""
+        params = {'app_id': self.app_id,
+                  'mode': 0,
+                  'time_stamp': int(time.time()),
+                  'nonce_str': int(time.time()),
+                  'image': self.get_image(image_param)}
         params['sign'] = self.get_sign(params)
         return params
 
@@ -98,8 +94,7 @@ class TextChat(BaseRobot):
         return params
 
     def ask(self, question):
-        """单句聊天
-        """
+        """单句聊天"""
         params = self.make_params(question)
         response = self.call_api(params)
         result = json.loads(response.text)
@@ -107,12 +102,11 @@ class TextChat(BaseRobot):
         return answer
 
     def chat(self):
-        """持续对话
-        """
+        """持续对话"""
         print('< 有啥想跟我说的？')
         while True:
             question = input('> ')
-            if (question == 'q'):
+            if question == 'q':
                 break
             else:
                 answer = self.ask(question)
@@ -120,20 +114,18 @@ class TextChat(BaseRobot):
 
 
 class ImgToText(BaseRobot):
-    """看图说话
-    """
+    """看图说话"""
     api = 'https://api.ai.qq.com/fcgi-bin/vision/vision_imgtotext'
 
     def make_params(self, image_param):
         """获取调用接口的参数
         """
-        params = {
-            'app_id': self.app_id,
-            'session_id': int(time.time()),
-            'time_stamp': int(time.time()),
-            'nonce_str': int(time.time()),
+        params = {'app_id': self.app_id,
+                  'session_id': int(time.time()),
+                  'time_stamp': int(time.time()),
+                  'nonce_str': int(time.time()),
+                  'image': self.get_image(image_param)
         }
-        params['image'] = self.get_image(image_param)
         params['sign'] = self.get_sign(params)
         return params
 
@@ -142,3 +134,4 @@ class ImgToText(BaseRobot):
         response = self.call_api(params)
         result = json.loads(response.text)
         return result
+

@@ -66,3 +66,93 @@ robot = Detectface(your_app_id, your_app_key)
 # 调用方法与图片转文字相同
 ```
 
+
+
+## 完成功能
+
+- [ ] 自然语言处理
+    - [ ] 基础文本分析
+    - [ ] 语义解析
+    - [ ] 情感分析
+    - [ ] 智能闲聊
+    - [ ] 机器翻译
+        - [ ] 文本翻译
+        - [ ] 图片翻译
+        - [ ] 语音翻译
+        - [ ] 语种识别
+- [ ] 智能语音
+    - [ ] 语音识别
+    - [ ] 长语音识别
+    - [ ] 关键词检索
+    - [ ] 语音合成
+- [ ] 计算机视觉
+    - [ ] 智能鉴黄
+    - [ ] 暴恐识别
+    - [ ] 优图OCR
+        - [] 身份证OCR
+        - [] 名片OCR
+        - [] 行驶证驾驶证OCR
+        - [] 车牌OCR
+        - [] 营业执照OCR
+        - [] 银行卡OCR
+        - [] 通用OCR
+        - [] 手写体OCR
+    - [] 人脸识别
+        - [] 人脸检测与分析
+        - [] 多人脸检测
+        - [] 人脸对比
+        - [] 跨年龄人脸识别
+        - [] 五官定位
+        - [] 人脸识别
+        - [] 人脸验证
+        - [] 个体管理
+            - [] 个体创建
+            - [] 删除个体
+            - [] 增加人脸
+            - [] 删除人脸
+            - [] 设置信息
+            - [] 获取信息
+        - [] 信息查询
+            - [] 获取组列表
+            - [] 获取个体列表
+            - [] 获取人脸列表
+            - [] 获取人脸信息
+    - [] 图片识别
+        - [x] 物体场景识别
+            - [x] 场景识别
+            - [x] 物体识别
+        - [] 图片标签识别
+        - [x] 看图说话
+        - [] 模糊图片检测
+        - [] 美食图片识别
+    - [] 图片特效
+        - [] 人脸美妆
+        - [] 人脸变妆
+        - [] 滤镜
+        - [] 人脸融合
+        - [] 大头贴
+        - [] 颜龄检测
+
+## 调用方式
+
+```python
+import qqai
+qqai.nlp.wordseg('XXXXXXXX')
+
+qqai.vision.ImgToText('xxxxx', 'xxxxxx').run('https://yyb.gtimg.com/aiplat/ai/assets/ai-demo/express-6.jpg')
+
+< {'ret': 0, 'msg': 'ok', 'data': {'text': '一位男士在海边骑自行车的照片'}}
+
+from qqai import nlp
+nlp.wordseg('XXXXXX')
+
+from qqai.nlp import wordseg
+wordseg('XXXXX')
+
+import qqai
+nlp_utily = qqai.nlp()
+nlp_utily.wordseg('XXXX')
+
+from qqai import nlp
+
+```
