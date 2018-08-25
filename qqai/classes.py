@@ -8,7 +8,7 @@ import json
 
 class QQAIClass:
     headers = {'Content-Type': 'application/x-www-form-urlencoded'}
-    imageHeaders = {
+    mediaHeaders = {
         'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.75 Safari/537.36',
     }
 
@@ -16,21 +16,21 @@ class QQAIClass:
         self.app_id = app_id
         self.app_key = app_key
 
-    def get_image(self, image_param):
-        """图片类接口获取 image 参数对象
+    def get_base64(self, media_param):
+        """获取媒体的Base64字符串
 
-        :param image_param 图片URL或者图片BufferedReader对象
+        :param media_param 媒体URL或者媒体BufferedReader对象
         """
-        if type(image_param) == str:
-            image_data = requests.get(
-                image_param, headers=self.imageHeaders).content
-        elif hasattr(image_param, 'read'):
-            image_data = image_param.read()
+        if type(media_param) == str:
+            media_data = requests.get(
+                media_param, headers=self.mediaHeaders).content
+        elif hasattr(media_param, 'read'):
+            media_data = media_param.read()
         else:
-            raise TypeError('image must be URL or BufferedReader')
+            raise TypeError('media must be URL or BufferedReader')
 
-        image = base64.b64encode(image_data).decode("utf-8")
-        return image
+        media = base64.b64encode(media_data).decode("utf-8")
+        return media
 
     def get_sign(self, params):
         """获取签名
@@ -56,7 +56,7 @@ class QQAIPicClass(QQAIClass):
         params = {'app_id': self.app_id,
                   'time_stamp': int(time.time()),
                   'nonce_str': int(time.time()),
-                  'image': self.get_image(image_param),
+                  'image': self.get_base64(image_param),
                  }
         params['sign'] = self.get_sign(params)
         return params
@@ -75,7 +75,7 @@ class QQAIPicRecognitionClass(QQAIClass):
                   'nonce_str': int(time.time()),
                   'format': api_format,
                   'topk': topk,
-                  'image': self.get_image(image_param),
+                  'image': self.get_base64(image_param),
                   }
         params['sign'] = self.get_sign(params)
         return params
@@ -110,7 +110,7 @@ class QQAIFaceClass(QQAIClass):
         params = {'app_id': self.app_id,
                   'time_stamp': int(time.time()),
                   'nonce_str': int(time.time()),
-                  'image': self.get_image(image_param),
+                  'image': self.get_base64(image_param),
                   'mode': mode,
                   }
         params['sign'] = self.get_sign(params)

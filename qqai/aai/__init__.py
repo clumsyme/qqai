@@ -1,1 +1,3 @@
-from .tts import *
+__all__ = ['audio', 'tts']
+
+from qqai.aai import audio, tts

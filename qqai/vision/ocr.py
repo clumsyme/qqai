@@ -10,7 +10,7 @@ class IDCardOCR(QQAIClass):
         params = {'app_id': self.app_id,
                   'time_stamp': int(time.time()),
                   'nonce_str': int(time.time()),
-                  'image': self.get_image(image_param),
+                  'image': self.get_base64(image_param),
                   'card_type': cardtype,
                   }
         params['sign'] = self.get_sign(params)
@@ -35,7 +35,7 @@ class DriverLicenseOCR(QQAIClass):
         params = {'app_id': self.app_id,
                   'time_stamp': int(time.time()),
                   'nonce_str': int(time.time()),
-                  'image': self.get_image(image_param),
+                  'image': self.get_base64(image_param),
                   'type': license_type,
                   }
         params['sign'] = self.get_sign(params)
@@ -56,7 +56,7 @@ class BizLicenseOCR(QQAIPicClass):
     api = 'https://api.ai.qq.com/fcgi-bin/ocr/ocr_bizlicenseocr'
 
 class CreditCardOCR(QQAIPicClass):
-    """营业执照OCR"""
+    """银行卡OCR"""
     api = 'https://api.ai.qq.com/fcgi-bin/ocr/ocr_creditcardocr'
 
 class GeneralOCR(QQAIPicClass):

@@ -1,4 +1,3 @@
-from .picture import *
-from .ocr import *
-from .ptu import *
-from .face import *
+__all__ = ['picture', 'ocr', 'ptu', 'face']
+
+from qqai.vision import picture, ocr, ptu, face

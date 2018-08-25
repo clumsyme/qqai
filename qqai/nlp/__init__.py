@@ -1,2 +1,3 @@
-from .text import *
-from .translate import *
+__all__ = ['text', 'translate']
+
+from qqai.nlp import text, translate

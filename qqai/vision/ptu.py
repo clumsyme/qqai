@@ -11,7 +11,7 @@ class FaceCosmetic(QQAIClass):
                   'time_stamp': int(time.time()),
                   'nonce_str': int(time.time()),
                   'cosmetic': cosmetic,
-                  'image': self.get_image(image_param),
+                  'image': self.get_base64(image_param),
                   }
         params['sign'] = self.get_sign(params)
         return params
@@ -32,7 +32,7 @@ class FaceDecoration(QQAIClass):
                   'time_stamp': int(time.time()),
                   'nonce_str': int(time.time()),
                   'decoration': decoration,
-                  'image': self.get_image(image_param),
+                  'image': self.get_base64(image_param),
                   }
         params['sign'] = self.get_sign(params)
         return params
@@ -53,7 +53,7 @@ class ImgFilterPitu(QQAIClass):
                   'time_stamp': int(time.time()),
                   'nonce_str': int(time.time()),
                   'filter': pic_filter,
-                  'image': self.get_image(image_param),
+                  'image': self.get_base64(image_param),
                   }
         params['sign'] = self.get_sign(params)
         return params
@@ -74,7 +74,7 @@ class ImgFilterAILab(QQAIClass):
                   'time_stamp': int(time.time()),
                   'nonce_str': int(time.time()),
                   'filter': pic_filter,
-                  'image': self.get_image(image_param),
+                  'image': self.get_base64(image_param),
                   'session_id': int(time.time()),
                   }
         params['sign'] = self.get_sign(params)
@@ -96,7 +96,7 @@ class FaceMerge(QQAIClass):
                   'time_stamp': int(time.time()),
                   'nonce_str': int(time.time()),
                   'model': model,
-                  'image': self.get_image(image_param),
+                  'image': self.get_base64(image_param),
                   }
         params['sign'] = self.get_sign(params)
         return params
@@ -117,7 +117,7 @@ class FaceSticker(QQAIClass):
                   'time_stamp': int(time.time()),
                   'nonce_str': int(time.time()),
                   'sticker': sticker,
-                  'image': self.get_image(image_param),
+                  'image': self.get_base64(image_param),
                   }
         params['sign'] = self.get_sign(params)
         return params

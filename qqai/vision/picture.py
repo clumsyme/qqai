@@ -22,7 +22,7 @@ class ImgToText(QQAIClass):
         params = {'app_id': self.app_id,
                   'time_stamp': int(time.time()),
                   'nonce_str': int(time.time()),
-                  'image': self.get_image(image_param),
+                  'image': self.get_base64(image_param),
                   'session_id': int(time.time()),
                   }
         params['sign'] = self.get_sign(params)

@@ -17,8 +17,8 @@ class FaceCompare(QQAIClass):
         params = {'app_id': self.app_id,
                   'time_stamp': int(time.time()),
                   'nonce_str': int(time.time()),
-                  'image_a': self.get_image(image_a_param),
-                  'image_b': self.get_image(image_b_param),
+                  'image_a': self.get_base64(image_a_param),
+                  'image_b': self.get_base64(image_b_param),
                   }
         params['sign'] = self.get_sign(params)
         return params
@@ -38,8 +38,8 @@ class DetectCrossAgeFace(QQAIClass):
         params = {'app_id': self.app_id,
                   'time_stamp': int(time.time()),
                   'nonce_str': int(time.time()),
-                  'source_image': self.get_image(source_image_param),
-                  'target_image': self.get_image(target_image_param),
+                  'source_image': self.get_base64(source_image_param),
+                  'target_image': self.get_base64(target_image_param),
                   }
         params['sign'] = self.get_sign(params)
         return params
@@ -63,7 +63,7 @@ class FaceIdentify(QQAIClass):
         params = {'app_id': self.app_id,
                   'time_stamp': int(time.time()),
                   'nonce_str': int(time.time()),
-                  'image': self.get_image(image),
+                  'image': self.get_base64(image),
                   'group_id': group_id,
                   'topn': topn,
                   }
@@ -85,7 +85,7 @@ class FaceVerify(QQAIClass):
         params = {'app_id': self.app_id,
                   'time_stamp': int(time.time()),
                   'nonce_str': int(time.time()),
-                  'image': self.get_image(image),
+                  'image': self.get_base64(image),
                   'person_id': person_id,
                   }
         params['sign'] = self.get_sign(params)
@@ -113,7 +113,7 @@ class NewPerson(QQAIClass):
                   'nonce_str': int(time.time()),
                   'group_ids': group_ids_param,
                   'person_id': person_id,
-                  'image': self.get_image(image),
+                  'image': self.get_base64(image),
                   'person_name': person_name,
                   }
         if tag is not None:
@@ -138,12 +138,12 @@ class AddFace(QQAIClass):
     def make_params(self, person_id, images, tag):
         """获取调用接口的参数"""
         if type(images) == str or hasattr(images, 'read'):
-            images_param = self.get_image(images)
+            images_param = self.get_base64(images)
         else:
             if len(images) > 5:
                 raise ValueError('No more than 5 images input in one request')
             else:
-                images_param = '|'.join(map(self.get_image, images))
+                images_param = '|'.join(map(self.get_base64, images))
         params = {'app_id': self.app_id,
                   'time_stamp': int(time.time()),
                   'nonce_str': int(time.time()),
