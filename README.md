@@ -96,9 +96,9 @@ robot = Detectface(your_app_id, your_app_key)
         - [ ] 语音识别-流式版(WeChat AI)
     - [ ] 长语音识别
     - [ ] 关键词检索
-    - [ ] 语音合成
-        - [ ] 语音合成（AI Lab）
-        - [ ] 语音合成（优图）
+    - [x] 语音合成
+        - [x] 语音合成（AI Lab）
+        - [x] 语音合成（优图）
 - [x] 计算机视觉
     - [x] 智能鉴黄
     - [x] 暴恐识别

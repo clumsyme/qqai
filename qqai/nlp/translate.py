@@ -69,7 +69,7 @@ class ImageTranslate(QQAIClass):
         return result
 
 class TextDetect(QQAIClass):
-    """文本翻译（AI Lab）"""
+    """语种识别"""
     api = 'https://api.ai.qq.com/fcgi-bin/nlp/nlp_textdetect'
 
     def make_params(self, text, candidate_langs=None, force=0):
