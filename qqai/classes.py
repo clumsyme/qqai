@@ -38,7 +38,7 @@ class QQAIClass:
         uri_str = ''
         for key in sorted(params.keys()):
             uri_str += '{}={}&'.format(key,
-                                       parse.quote(str(params[key]), safe=''))
+                                       parse.quote_plus(str(params[key]), safe=''))
         sign_str = uri_str + 'app_key=' + self.app_key
 
         hash_str = hashlib.md5(sign_str.encode('utf-8'))
