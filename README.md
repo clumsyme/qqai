@@ -116,6 +116,7 @@ it.run('https://yyb.gtimg.com/aiplat/ai/assets/ai-demo/express-6.jpg')
 当前包含以下接口：
 
 - [聊天机器人](#聊天机器人)
+- [文本翻译](#文本翻译)
 - [图片转文字](#图片转文字)
 - [人脸检测](#人脸检测)
 
@@ -138,6 +139,28 @@ siri.chat()
 # < 我是你的小助手啊
 # > 你能干嘛呀
 # < 呵呵，我能干的事情多的数不清。
+```
+
+### 文本翻译
+
+可用语言见[官方文档](https://ai.qq.com/doc/nlptrans.shtml#5-%E6%94%AF%E6%8C%81%E8%AF%AD%E8%A8%80%E5%AE%9A%E4%B9%89)
+
+```py
+from qqai import NLPTrans
+
+robot = NLPTrans(you_app_id, you_app_key)
+
+result = robot.run('愿原力与你同在')
+print(result)
+# {'ret': 0, 'msg': 'ok', 'data': {'source_text': '愿原力与你同在', 'target_text': 'May the Force be with you'}}
+
+# 默认为中英翻译，若需要其他语种翻译，请按一下格式实例化：
+# source为源语言，target为目标语言，
+robot = NLPTrans(you_app_id, you_app_key, source='en', target='es')
+
+result = robot.run('May the force be with you.')
+print(result)
+# {'ret': 0, 'msg': 'ok', 'data': {'source_text': 'May the force be with you.', 'target_text': 'Que la fuerza esté contigo.'}}
 ```
 
 ### 图片转文字

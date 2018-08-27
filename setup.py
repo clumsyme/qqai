@@ -17,7 +17,7 @@ DESCRIPTION = 'Easy use of apis for Tencent AI'
 URL = 'https://github.com/clumsyme/qqai'
 EMAIL = 'me@imliyan.com'
 AUTHOR = 'Li Yan'
-VERSION = '0.1.3'
+VERSION = '0.1.4'
 
 # What packages are required for this module to be executed?
 REQUIRED = [
