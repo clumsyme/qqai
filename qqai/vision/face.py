@@ -56,7 +56,7 @@ class FaceShape(QQAIFaceClass):
 
 class FaceIdentify(QQAIClass):
     """人脸识别"""
-    api = '	https://api.ai.qq.com/fcgi-bin/face/face_faceidentify'
+    api = 'https://api.ai.qq.com/fcgi-bin/face/face_faceidentify'
 
     def make_params(self, image, group_id, topn):
         """获取调用接口的参数"""
@@ -78,7 +78,7 @@ class FaceIdentify(QQAIClass):
 
 class FaceVerify(QQAIClass):
     """人脸验证"""
-    api = '	https://api.ai.qq.com/fcgi-bin/face/face_faceverify'
+    api = 'https://api.ai.qq.com/fcgi-bin/face/face_faceverify'
 
     def make_params(self, image, person_id):
         """获取调用接口的参数"""
@@ -99,7 +99,7 @@ class FaceVerify(QQAIClass):
 
 class NewPerson(QQAIClass):
     """个体创建"""
-    api = '	https://api.ai.qq.com/fcgi-bin/face/face_newperson'
+    api = 'https://api.ai.qq.com/fcgi-bin/face/face_newperson'
 
     def make_params(self, group_ids, person_id, image, person_name, tag=None):
         """获取调用接口的参数"""
@@ -129,11 +129,11 @@ class NewPerson(QQAIClass):
 
 class DelPerson(QQAIFacePersonClass):
     """删除个体"""
-    api = '	https://api.ai.qq.com/fcgi-bin/face/face_delperson'
+    api = 'https://api.ai.qq.com/fcgi-bin/face/face_delperson'
 
 class AddFace(QQAIClass):
     """个体创建"""
-    api = '	https://api.ai.qq.com/fcgi-bin/face/face_addface'
+    api = 'https://api.ai.qq.com/fcgi-bin/face/face_addface'
 
     def make_params(self, person_id, images, tag):
         """获取调用接口的参数"""
@@ -162,7 +162,7 @@ class AddFace(QQAIClass):
 
 class DelFace(QQAIClass):
     """删除人脸"""
-    api = '	https://api.ai.qq.com/fcgi-bin/face/face_delface'
+    api = 'https://api.ai.qq.com/fcgi-bin/face/face_delface'
 
     def make_params(self, person_id, face_ids):
         """获取调用接口的参数"""
@@ -188,7 +188,7 @@ class DelFace(QQAIClass):
 
 class SetInfo(QQAIClass):
     """设置信息"""
-    api = '	https://api.ai.qq.com/fcgi-bin/face/face_setinfo'
+    api = 'https://api.ai.qq.com/fcgi-bin/face/face_setinfo'
 
     def make_params(self, person_id, person_name=None, tag=None):
         """获取调用接口的参数"""
@@ -212,11 +212,11 @@ class SetInfo(QQAIClass):
 
 class GetInfo(QQAIFacePersonClass):
     """获取信息"""
-    api = '	https://api.ai.qq.com/fcgi-bin/face/face_getinfo'
+    api = 'https://api.ai.qq.com/fcgi-bin/face/face_getinfo'
 
 class GetGroupIds(QQAIClass):
     """获取组列表"""
-    api = '	https://api.ai.qq.com/fcgi-bin/face/face_getgroupids'
+    api = 'https://api.ai.qq.com/fcgi-bin/face/face_getgroupids'
 
     def make_params(self):
         """获取调用接口的参数"""
@@ -235,7 +235,7 @@ class GetGroupIds(QQAIClass):
 
 class GetPersonIds(QQAIClass):
     """获取个体列表"""
-    api = '	https://api.ai.qq.com/fcgi-bin/face/face_getpersonids'
+    api = 'https://api.ai.qq.com/fcgi-bin/face/face_getpersonids'
 
     def make_params(self, group_id):
         """获取调用接口的参数"""
@@ -255,7 +255,7 @@ class GetPersonIds(QQAIClass):
 
 class GetFaceIds(QQAIClass):
     """获取人脸列表"""
-    api = '	https://api.ai.qq.com/fcgi-bin/face/face_getfaceids'
+    api = 'https://api.ai.qq.com/fcgi-bin/face/face_getfaceids'
 
     def make_params(self, person_id):
         """获取调用接口的参数"""
@@ -275,7 +275,7 @@ class GetFaceIds(QQAIClass):
 
 class GetFaceInfo(QQAIClass):
     """获取人脸信息"""
-    api = '	https://api.ai.qq.com/fcgi-bin/face/face_getfaceinfo'
+    api = 'https://api.ai.qq.com/fcgi-bin/face/face_getfaceinfo'
 
     def make_params(self, face_id):
         """获取调用接口的参数"""
