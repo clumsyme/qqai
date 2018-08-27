@@ -84,8 +84,7 @@ setup(
     url=URL,
     python_requires='>=3.6.0',
     # If your package is a single module, use this instead of 'packages':
-    packages=['qqai'],
-    package_dir={'qqai': 'qqai'},
+    packages=find_packages(),
 
     # entry_points={
     #     'console_scripts': ['mycli=mymodule:cli'],
