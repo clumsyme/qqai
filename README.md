@@ -108,12 +108,15 @@ from qqai.vision.picture import ImgToText
 it = ImgToText('your_app_id', 'your_app_key')
 it.run('https://yyb.gtimg.com/aiplat/ai/assets/ai-demo/express-6.jpg')
 # {'ret': 0, 'msg': 'ok', 'data': {'text': '一位男士在海边骑自行车的照片'}}
+
+# 图片类应用可接受图片文件作为输入
+with open('cat.jpeg', 'rb') as file:
+    result = it.run(file)
+    print(result)
+# {'ret': 0, 'msg': 'ok', 'data': {'text': '一只白色的小猫'}}
 ```
 
-
-## 用法（原文档）
-
-当前包含以下接口：
+## 更多示例
 
 - [聊天机器人](#聊天机器人)
 - [文本翻译](#文本翻译)
